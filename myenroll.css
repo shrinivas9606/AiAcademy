@@ -1,0 +1,131 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #1a1f3c, #0a0d1c);
+  color: #f5f5f5;
+}
+
+header {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid #00f0ff;
+}
+
+header h1 {
+  color: #00f0ff;
+  margin: 0;
+}
+
+header p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 1rem;
+}
+
+input {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #00f0ff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  flex: 1;
+  max-width: 350px;
+}
+
+button {
+  background: #00f0ff;
+  color: #000;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #00c0d4;
+}
+
+#cards {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid #00f0ff;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card h3 {
+  color: #00f0ff;
+  margin: 0;
+}
+
+.card-id {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.badge {
+  background: #00f0ff;
+  color: #000;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.tag.paid { background: #28a745; }
+.tag.pending { background: #ffc107; color: #000; }
+.tag.failed { background: #dc3545; }
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

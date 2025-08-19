@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuffixAI Vlogs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles from your existing theme */
+        :root {
+            --bg1: #4b2c82;
+            --bg2: #2a2b8d;
+            --accent1: #c98fff;
+            --accent2: #8fd1ff;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass: rgba(255, 255, 255, 0.04);
+            --text: #f3f3f8;
+            --muted: #c9c3df;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            width: clamp(320px, 100%, var(--max-width));
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .section {
+            padding: 2.25rem 0;
+        }
+
+        /* Header for the vlog page */
+        .vlog-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(180deg, rgba(12, 6, 22, 0.25), transparent);
+            backdrop-filter: blur(6px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            width: 100%; /* Make header full width */
+            padding-left: 1rem; /* Add padding to the sides */
+            padding-right: 1rem;
+        }
+
+        .vlog-header .logo {
+            height: 40px;
+        }
+
+        .vlog-header nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .vlog-header a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem;
+        }
+
+        /* Featured video section */
+        .featured-vlog {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .video-player {
+            flex: 2;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 50%; /* Reduce the size of the video player */
+        }
+        
+        .video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .featured-details {
+            flex: 1;
+        }
+        
+        .featured-details h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .featured-details p {
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .watch-btn {
+            background-color: var(--accent1);
+            color: #08020a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Vlog gallery */
+        .vlog-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .vlog-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .vlog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vlog-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .vlog-info {
+            padding: 1rem;
+        }
+
+        .vlog-info h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .vlog-info p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .vlog-info small {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* About section */
+        .about-vlogs {
+            background-color: #fff;
+            color: #333;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .about-vlogs h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-vlogs p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .featured-vlog {
+                flex-direction: column;
+                text-align: center;
+            }
+            .vlog-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="vlog-header container">
+        <a href="index.html">
+            <img src="img/SUFIX LOGO.jpg" alt="SuffixAI Logo" class="logo">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Featured Vlog Section -->
+        <section class="featured-vlog section">
+            <div class="video-player">
+                <iframe src="#" title="Featured Vlog" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="featured-details">
+                <h2>The Future of AI is Here</h2>
+                <p>
+                    Join our latest vlog as we dive deep into the most exciting developments in AI technology. 
+                    From advanced models to new applications, we cover everything you need to know to stay ahead.
+                </p>
+                <a href="https://www.youtube.com/watch?v=vB0V3iCSzQw" class="watch-btn">Watch on YouTube</a>
+            </div>
+        </section>
+
+        <!-- Vlog Gallery Section -->
+        <section class="section">
+            <h2>Vlog Gallery</h2>
+            <div class="vlog-gallery-grid">
+                <!-- Vlog Card 1 -->
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_1" class="vlog-card" target="_blank">
+                    <img src="https://placehold.co/400x225/4b2c82/fff?text=Vlog+1" alt="Vlog Thumbnail 1">
+                    <div class="vlog-info">
+                        <h3>Vlog 1: Getting Started with Machine Learning</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <small>Uploaded: Oct 25, 2025</small>
+                    </div>
+                </a>
+                
+                <!-- Vlog Card 2 -->
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_2" class="vlog-card" target="_blank">
+                    <img src="https://placehold.co/400x225/2a2b8d/fff?text=Vlog+2" alt="Vlog Thumbnail 2">
+                    <div class="vlog-info">
+                        <h3>Vlog 2: Your First AI Project: Step-by-Step</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <small>Uploaded: Oct 20, 2025</small>
+                    </div>
+                </a>
+
+                <!-- Vlog Card 3 -->
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_3" class="vlog-card" target="_blank">
+                    <img src="https://placehold.co/400x225/c98fff/fff?text=Vlog+3" alt="Vlog Thumbnail 3">
+                    <div class="vlog-info">
+                        <h3>Vlog 3: The Role of AI in Modern Business</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <small>Uploaded: Oct 15, 2025</small>
+                    </div>
+                </a>
+                
+                <!-- Add more vlog cards here as needed -->
+                
+            </div>
+        </section>
+        
+        <!-- About Vlogs Section -->
+        <section class="about-vlogs">
+            <h2>About Our Vlogs</h2>
+            <p>
+                Welcome to the SuffixAI vlog hub! Here, we share insights on the latest trends in

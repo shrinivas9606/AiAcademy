@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuffixAI • Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== SuffixAI - Gen Z Violet/Blue Theme ===== */
+        :root {
+            --violet-1: #6c2bd9;
+            --violet-2: #9b5cff;
+            --blue-1: #3aa0ff;
+            --glass: rgba(255, 255, 255, 0.06);
+            --muted: rgba(255, 255, 255, 0.75);
+            --card: rgba(255, 255, 255, 0.04);
+            --radius: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(600px 300px at 10% 10%, rgba(155, 92, 255, 0.12), transparent 20%),
+                        radial-gradient(600px 300px at 90% 90%, rgba(58, 160, 255, 0.10), transparent 20%),
+                        linear-gradient(135deg, var(--violet-1), var(--blue-1));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(15, 12, 30, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .form-header p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin: 8px 0 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--violet-2);
+        }
+        
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--violet-2), var(--blue-1));
+            border: none;
+            border-radius: 10px;
+            color: #09030a;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        #messageBox {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .success {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #b7f5c9;
+            border: 1px solid rgba(34, 197, 94, 0.18);
+        }
+
+        .error {
+            background-color: rgba(239, 68, 68, 0.12);
+            color: #ffd1d1;
+            border: 1px solid rgba(239, 68, 68, 0.14);
+        }
+
+        .loading {
+            background-color: rgba(58, 160, 255, 0.1);
+            color: #add8e6;
+            border: 1px solid rgba(58, 160, 255, 0.12);
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 20px;
+            }
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+            .form-group input, button {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <header class="form-header">
+            <h1>Register for SuffixAI ✨</h1>
+            <p>Join the top 1% and unlock your potential.</p>
+        </header>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Alice Johnson" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="example@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="At least 6 characters" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" placeholder="+1 (555) 123-4567" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <input type="text" id="branch" placeholder="e.g., Computer Engineering" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="e.g., San Francisco" required>
+            </div>
+            <button type="submit" id="registerBtn">Register</button>
+        </form>
+
+        <div id="messageBox"></div>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+        // Global variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKTlD0iuhjRc5vAq5Cw9yyJbzoNwyXbAw",
+            authDomain: "sufix-registration.firebaseapp.com",
+            projectId: "sufix-registration",
+            storageBucket: "sufix-registration.firebasestorage.app",
+            messagingSenderId: "979586808842",
+            appId: "1:979586808842:web:381c48575a87f98c96f3f3",
+            measurementId: "G-WSGSPZ8GT3"
+        };
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db, auth;
+
+        // Initialize Firebase
+        async function initializeFirebase() {
+            if (!firebaseConfig.apiKey) {
+                console.error("Firebase config is not available.");
+                showMessage("Firebase is not configured. Registration will not work.", 'error');
+                return;
+            }
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            console.log("Firebase initialized successfully.");
+            console.log("Auth:", auth);
+            console.log("Firestore:", db);
+        }
+
+        // DOM elements
+        const form = document.getElementById('registrationForm');
+        const messageBox = document.getElementById('messageBox');
+        const registerBtn = document.getElementById('registerBtn');
+        const fullNameInput = document.getElementById('fullName');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const dobInput = document.getElementById('dob');
+        const branchInput = document.getElementById('branch');
+        const cityInput = document.getElementById('city');
+
+        // Function to show messages
+        function showMessage(message, type) {
+            messageBox.style.display = 'block';
+            messageBox.className = type;
+            messageBox.innerText = message;
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showMessage('Registering...', 'loading');
+            registerBtn.disabled = true;
+
+            const fullName = fullNameInput.value;
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const phoneNumber = phoneNumberInput.value;
+            const dob = dobInput.value;
+            const city = cityInput.value;
+            const branch = branchInput.value;
+
+            // Simple validation
+            if (!email || !password || !fullName || !phoneNumber || !dob || !city || !branch) {
+                showMessage("All fields are required.", 'error');
+                registerBtn.disabled = false;
+                return;
+            }
+
+            try {
+                // 1. Create user with Email and Password
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                const userId = user.uid;
+
+                // Make sure Firestore is initialized before attempting to write
+                if (!db) {
+                  console.error("Firestore is not initialized.");
+                  showMessage("Registration failed. Firestore connection error.", 'error');
+                  return;
+                }
+                
+                // 2. Save additional user data to Firestore
+                const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/registrations`, 'userData');
+                await setDoc(userDocRef, {
+                    fullName: fullName,
+                    email: email,
+                    phoneNumber: phoneNumber,
+                    dob: dob,
+                    city: city,
+                    branch: branch, // Add the branch field here
+                    createdAt: new Date()
+                });
+
+                showMessage("Registration successful! Redirecting to home...", 'success');
+                // Redirect to home page after a short delay
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000); // 2-second delay
+            } catch (error) {
+                console.error("Registration failed:", error);
+                let errorMessage = "Registration failed. Please try again.";
+                if (error.code === 'auth/email-already-in-use') {
+                    errorMessage = "This email is already in use. Please use a different one.";
+                } else if (error.code === 'auth/weak-password') {
+                    errorMessage = "The password is too weak. Please use at least 6 characters.";
+                }
+                showMessage(errorMessage, 'error');
+            } finally {
+                registerBtn.disabled = false;
+            }
+        });
+
+        // Initialize Firebase on page load
+        initializeFirebase();
+    </script>
+</body>
+</html>

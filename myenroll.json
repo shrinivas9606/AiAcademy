@@ -1,0 +1,83 @@
+[
+  {
+    "rollNumber": "101",
+    "name": "Alice",
+    "courses": [
+      {
+        "courseName": "AI Foundations",
+        "joinDate": "2025-01-10",
+        "endDate": "2025-03-10",
+        "duration": "2 months",
+        "paymentStatus": "Paid"
+      },
+      {
+        "courseName": "Machine Learning Advanced",
+        "joinDate": "2025-03-15",
+        "endDate": "2025-06-15",
+        "duration": "3 months",
+        "paymentStatus": "Paid"
+      },
+      {
+        "courseName": "Data Science with Python",
+        "joinDate": "2025-07-01",
+        "endDate": "2025-09-01",
+        "duration": "2 months",
+        "paymentStatus": "Pending"
+      }
+    ]
+  },
+  {
+    "rollNumber": "102",
+    "name": "Aman",
+    "courses": [
+      {
+        "courseName": "AI Foundations",
+        "joinDate": "2025-02-01",
+        "endDate": "2025-04-01",
+        "duration": "2 months",
+        "paymentStatus": "Paid"
+      }
+    ]
+  },
+  {
+    "rollNumber": "103",
+    "name": "Shri",
+    "courses": [
+      {
+        "courseName": "AI Foundations",
+        "joinDate": "2025-01-05",
+        "endDate": "2025-03-05",
+        "duration": "2 months",
+        "paymentStatus": "Paid"
+      },
+      {
+        "courseName": "Python for AI",
+        "joinDate": "2025-03-06",
+        "endDate": "2025-04-30",
+        "duration": "2 months",
+        "paymentStatus": "Paid"
+      },
+      {
+        "courseName": "AI in Healthcare",
+        "joinDate": "2025-05-01",
+        "endDate": "2025-07-01",
+        "duration": "2 months",
+        "paymentStatus": "Paid"
+      },
+      {
+        "courseName": "Deep Learning Mastery",
+        "joinDate": "2025-07-05",
+        "endDate": "2025-09-05",
+        "duration": "2 months",
+        "paymentStatus": "Pending"
+      },
+      {
+        "courseName": "AI Ethics & Policy",
+        "joinDate": "2025-09-06",
+        "endDate": "2025-11-06",
+        "duration": "2 months",
+        "paymentStatus": "Paid"
+      }
+    ]
+  }
+]

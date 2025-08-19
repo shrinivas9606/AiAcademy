@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SuffixAI • Enrollment Lookup</title>
+<style>
+/* ===== SuffixAI - Gen Z Violet/Blue Theme ===== */
+:root {
+  --violet-1: #6c2bd9;
+  --violet-2: #9b5cff;
+  --blue-1: #3aa0ff;
+  --glass: rgba(255, 255, 255, 0.06);
+  --muted: rgba(255, 255, 255, 0.75);
+  --card: rgba(255, 255, 255, 0.04);
+  --radius: 14px;
+  --maxw: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: radial-gradient(600px 300px at 10% 10%, rgba(155, 92, 255, 0.12), transparent 20%),
+    radial-gradient(600px 300px at 90% 90%, rgba(58, 160, 255, 0.1), transparent 20%),
+    linear-gradient(135deg, var(--violet-1), var(--blue-1));
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--violet-2), var(--violet-1));
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #fff;
+  font-size: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* NEW: Mobile header alignment */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center; /* This centers the "Enrollment Lookup" text */
+    gap: 16px;
+  }
+  .brand {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  .logo {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(15, 12, 30, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+}
+
+/* Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 16px;
+  }
+  body {
+    padding: 20px 12px;
+  }
+}
+
+/* Left (search + results) */
+.left .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.searchbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--card);
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.searchbar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  outline: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.searchbar input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.searchbar button {
+  background: linear-gradient(90deg, var(--violet-2), var(--blue-1));
+  border: none;
+  color: #09030a;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.tip {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .searchbar {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+  .searchbar input {
+    flex-grow: 1;
+    min-width: 150px;
+    padding: 12px;
+    font-size: 1rem;
+    text-align: left;
+  }
+  .searchbar button {
+    flex-grow: 1;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  .tip {
+    text-align: left;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero > div:first-child {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  .hero .tip {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  .searchbar {
+    flex-direction: column;
+  }
+  .searchbar input {
+    text-align: center;
+  }
+  .searchbar button {
+    width: 100%;
+  }
+}
+
+/* small helpers */
+.meta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Cards list of students (results) */
+.results {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.student-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.student-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-name {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.roll {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.count-badge {
+  background: linear-gradient(90deg, var(--blue-1), var(--violet-2));
+  color: #07020a;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .student-card {
+    padding: 12px;
+  }
+  .student-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .student-name {
+    font-size: 0.95rem;
+  }
+  .roll {
+    font-size: 0.9rem;
+  }
+  .count-badge {
+    align-self: center;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+/* Table styles for PC/Laptop */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+thead th {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  font-weight: 700;
+}
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+th:nth-child(1), td:nth-child(1) { width: 35%; white-space: normal; min-width: 150px; }
+th:nth-child(2), td:nth-child(2) { width: 15%; min-width: 90px; }
+th:nth-child(3), td:nth-child(3) { width: 15%; min-width: 90px; }
+th:nth-child(4), td:nth-child(4) { width: 15%; min-width: 80px; }
+th:nth-child(5), td:nth-child(5) { width: 20%; min-width: 100px; text-align: center; }
+
+/* Table styles for Mobile */
+@media (max-width: 768px) {
+  .table-wrap {
+    overflow-x: hidden;
+  }
+  table {
+    border: none;
+    min-width: unset;
+  }
+  table thead {
+    display: none;
+  }
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+  tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  td {
+    border-bottom: none;
+    text-align: right;
+    padding: 8px 12px;
+    position: relative;
+    padding-left: 50%;
+    margin-bottom: 0;
+    background: transparent;
+  }
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  td:first-child {
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  .tag {
+    float: right;
+  }
+}
+
+/* tags */
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.paid {
+  background: rgba(34, 197, 94, 0.15);
+  color: #b7f5c9;
+  border: 1px solid rgba(34, 197, 94, 0.18);
+}
+
+.pending {
+  background: rgba(245, 158, 11, 0.12);
+  color: #ffe6b3;
+  border: 1px solid rgba(245, 158, 11, 0.14);
+}
+
+.failed {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ffd1d1;
+  border: 1px solid rgba(239, 68, 68, 0.14);
+}
+
+@media (max-width: 768px) {
+  .tag {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tag {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+  }
+}
+
+/* Right column (info / contact / legend) */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card.small {
+  padding: 12px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chip {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+@media (max-width: 980px) {
+  .right {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card.small {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  .legend {
+    gap: 6px;
+  }
+  .legend .row {
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+  .chip {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* footer note */
+.note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .note {
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
+/* Gen-Z accents */
+mark {
+  background: linear-gradient(90deg, #fff3a1, #ffd1ff);
+  color: #09030a;
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.emoji {
+  font-size: 1.15rem;
+  margin-right: 6px;
+}
+
+/* tiny responsive */
+@media (max-width: 640px) {
+  .student-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px 8px;
+  }
+  .wrap {
+    max-width: 100%;
+  }
+  .card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+  .card.small {
+    padding: 8px;
+  }
+  .searchbar {
+    padding: 12px;
+  }
+  .searchbar input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  .searchbar button {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+  .student-card {
+    padding: 10px;
+  }
+  .emoji {
+    font-size: 1rem;
+    margin-right: 4px;
+  }
+  .meta {
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 12px 6px;
+  }
+  .card {
+    padding: 10px;
+  }
+  .searchbar {
+    padding: 10px;
+  }
+  th,
+  td {
+    padding: 4px 3px;
+    font-size: 0.75rem;
+  }
+  .tag {
+    font-size: 0.6rem;
+    padding: 2px 4px;
+  }
+}
+
+
+/* Table styles for Mobile - MODIFIED FOR BETTER MOBILE LAYOUT */
+@media (max-width: 768px) {
+  .table-wrap {
+    overflow-x: hidden;
+  }
+  table {
+    border: none;
+    min-width: unset;
+  }
+  table thead {
+    display: none;
+  }
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+  }
+  tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.01)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  td {
+    border-bottom: none;
+    text-align: right;
+    padding: 8px 12px;
+    position: relative;
+    padding-left: 50%;
+    margin-bottom: 0;
+    background: transparent;
+    /* NEW: Use Grid for inner key-value layout */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px; /* Add some space between key and value */
+    text-align: left; /* Align value to the left */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+  }
+  /* NEW: Style the key using a pseudo-element with Grid */
+  td::before {
+    content: attr(data-label);
+    position: static; /* Change to static so it's part of the grid flow */
+    width: auto;
+    padding-right: 0;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 700;
+    color: var(--muted);
+    justify-self: start; /* Align key to the start of its cell */
+  }
+  td:first-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  .tag {
+    float: none; /* Remove float */
+    justify-self: end; /* Align tag to the end of its cell */
+  }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header style="margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+      <div class="brand">
+        <div class="logo">SA</div>
+        <div>
+          <div class="title">SuffixAI Academy</div>
+          <div class="subtitle">Top 1% Enrollment · AI & ML Courses</div>
+        </div>
+      </div>
+      <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+        <div style="font-weight: 700">Enrollment Lookup</div>
+        <div style="color: rgba(255, 255, 255, 0.75)">Search by exact roll or name 🔎</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="left">
+        <div class="card">
+          <div class="hero">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap">
+              <div>
+                <div style="font-weight: 900; font-size: 1.1rem">Find your enrollments <span style="opacity: 0.85">✨</span></div>
+                <div class="tip">Type exact roll number (e.g. <code>101</code>) or exact full name (e.g. <em>Alice Johnson</em>)</div>
+              </div>
+              <div style="text-align: right; color: var(--muted)">Verified records • exact match only</div>
+            </div>
+
+            <div style="margin-top: 12px" class="searchbar" role="search">
+              <input id="query" placeholder="e.g. 101 or Alice Johnson" aria-label="Search by exact roll or name" />
+              <button id="searchBtn">Search</button>
+            </div>
+            <div class="meta" id="metaLine" aria-live="polite" hidden></div>
+          </div>
+
+          <div class="results" id="results"></div>
+          <div class="note">ℹ️ Only exact matches will be shown. Make sure to enter the complete name or exact roll number.</div>
+        </div>
+      </div>
+
+      <aside class="right">
+        <div class="card small">
+          <div style="font-weight: 800; margin-bottom: 8px">Legend</div>
+          <div class="legend">
+            <div class="row"><span class="chip" style="background: linear-gradient(90deg, var(--blue-1), var(--violet-2))"></span> <small>Verified Enrollment</small></div>
+            <div class="row"><span class="chip" style="background: #22c55e"></span> <small>Paid</small></div>
+            <div class="row"><span class="chip" style="background: #f59e0b"></span> <small>Pending</small></div>
+            <div class="row"><span class="chip" style="background: #ef4444"></span> <small>Failed</small></div>
+          </div>
+        </div>
+
+        <div class="card small" style="text-align: center">
+          <div style="font-weight: 800">Exact Match Search</div>
+          <div style="margin-top: 8px; color: var(--muted)">Enter complete roll number or full name for accurate results <br><u style="background-color: #000000;"><p style="color: #fff36a;"> It will take 12-15 Hour to Update new Enrollment</p></u></div>
+          <div style="margin-top: 10px">🎯 <span style="font-weight: 800">Precision</span> — exact matches only</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    /*
+  Enrollment lookup script with EXACT MATCHING
+  - fetches enrollments from enrollments.json (separate)
+  - groups by rollNumber/name
+  - displays cards with table and course count
+  - search triggers only when Search button pressed (also Enter)
+  - MODIFIED: Only shows results for EXACT matches of name or roll number
+*/
+
+    // Elements
+    const queryEl = document.getElementById("query");
+    const btn = document.getElementById("searchBtn");
+    const resultsEl = document.getElementById("results");
+    const metaLine = document.getElementById("metaLine");
+
+    let enrollments = []; // raw rows
+    let indexByStudent = new Map(); // roll -> {roll,name,courses:[]}
+
+    // Utility: safe lower
+    const s = (v) => (v || "").toString().toLowerCase().trim();
+
+    // Load JSON (on start, but don't render)
+    async function loadEnrollments() {
+      console.log('Attempting to load enrollments.json...');
+      try {
+        const res = await fetch("enrollments.json", { cache: "no-store" });
+        if (!res.ok) {
+          console.error('Fetch failed with status:', res.status, res.statusText);
+          throw new Error('Network response was not ok');
+        }
+        enrollments = await res.json();
+        console.log('Successfully loaded enrollments.json. Found', enrollments.length, 'student records.');
+        buildIndex();
+      } catch (err) {
+        console.error('Failed to load enrollments.json. Error:', err);
+        resultsEl.innerHTML = `<div class="student-card"><div style="color:#ffd1d1">⚠️ Failed to load enrollment data. Open console for details.</div></div>`;
+      }
+    }
+
+    // Build index from the already grouped student data
+    function buildIndex() {
+      console.log('Building student index...');
+      indexByStudent.clear();
+      for (const student of enrollments) {
+        const roll = (student.rollNumber || "").toString();
+        const name = student.name || "";
+        const key = roll + "||" + name; // unique per student
+
+        // Transform courses to match expected structure
+        const transformedCourses = (student.courses || []).map((course) => ({
+          courseName: course.courseName || "—",
+          startDate: course.joinDate || course.joiningDate || course.startDate || "—",
+          endDate: course.endDate || "—",
+          duration: course.duration || "—",
+          paymentStatus: course.paymentStatus || "—",
+          code: course.code || "",
+        }));
+
+        indexByStudent.set(key, {
+          rollNumber: roll,
+          name: name,
+          courses: transformedCourses,
+        });
+      }
+      console.log('Student index built successfully. Total unique students:', indexByStudent.size);
+    }
+
+    // Render list of student objects (array)
+    function renderStudents(list, query) {
+      console.log('Rendering results for query:', query);
+      resultsEl.innerHTML = "";
+      if (!list.length) {
+        metaLine.hidden = true;
+        resultsEl.innerHTML = `<div class="student-card"><div style="color:#ffd1d1">🤷‍♀️ No exact match found for <strong>${escapeHtml(
+          query
+        )}</strong>. Please check your spelling and try the complete name or exact roll number. Don't worry if you enrolled it will take 12-15 Hour to update information</div></div>`;
+        return;
+      }
+
+      metaLine.hidden = false;
+      metaLine.textContent = `Found ${list.length} student${list.length > 1 ? "s" : ""} for "${query}"`;
+
+      for (const st of list) {
+        const card = document.createElement("div");
+        card.className = "student-card";
+
+        const head = document.createElement("div");
+        head.className = "student-head";
+        head.innerHTML = `
+      <div>
+        <div class="student-name"><span class="emoji">👤</span> ${highlight(st.name, query)}</div>
+        <div class="roll">Roll: ${highlight(st.rollNumber, query)}</div>
+      </div>
+      <div>
+        <div class="count-badge">${st.courses.length} course${st.courses.length > 1 ? "s" : ""}</div>
+      </div>
+    `;
+
+        // build table
+        const wrap = document.createElement("div");
+        wrap.className = "table-wrap";
+        const table = document.createElement("table");
+        const thead = `<thead><tr>
+        <th>Course</th><th>Start</th><th>End</th><th>Duration</th><th>Payment</th>
+      </tr></thead>`;
+        const tbody = document.createElement("tbody");
+        for (const c of st.courses) {
+          const tr = document.createElement("tr");
+          const payTag = paymentTag(c.paymentStatus);
+          tr.innerHTML = `
+            <td data-label="Course"><strong>${escapeHtml(c.courseName)}</strong>${
+            c.code ? '<br><small style="color:var(--muted)">' + escapeHtml(c.code) + "</small>" : ""
+          }</td>
+            <td data-label="Start">${escapeHtml(c.startDate)}</td>
+            <td data-label="End">${escapeHtml(c.endDate)}</td>
+            <td data-label="Duration">${escapeHtml(c.duration)}</td>
+            <td data-label="Payment">${payTag}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+        table.innerHTML = thead;
+        table.appendChild(tbody);
+        wrap.appendChild(table);
+
+        card.appendChild(head);
+        card.appendChild(wrap);
+        resultsEl.appendChild(card);
+      }
+    }
+
+    // MODIFIED: build list of matching students for query - EXACT MATCH ONLY
+    function searchQuery(rawQ) {
+      const q = s(rawQ);
+      if (!q) return [];
+      const matches = [];
+      for (const [k, st] of indexByStudent.entries()) {
+        if (s(st.rollNumber) === q || s(st.name) === q) {
+          matches.push(st);
+        }
+      }
+      return matches;
+    }
+
+    // Utils
+    function escapeHtml(text = "") {
+      return (text || "")
+        .toString()
+        .replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[m]));
+    }
+
+    function highlight(text, q) {
+      if (!q) return escapeHtml(text);
+      const esc = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return escapeHtml(text).replace(new RegExp(esc, "gi"), (m) => `<mark>${m}</mark>`);
+    }
+
+    function paymentTag(status = "") {
+      const sLow = (status || "").toLowerCase();
+      if (sLow.includes("paid")) return `<span class="tag paid">Paid ✅</span>`;
+      if (sLow.includes("pending")) return `<span class="tag pending">Pending ⏳</span>`;
+      if (sLow.includes("fail") || sLow.includes("failed")) return `<span class="tag failed">Failed ❌</span>`;
+      return `<span class="tag">${escapeHtml(status || "—")}</span>`;
+    }
+
+    // On search click
+    btn.addEventListener("click", async () => {
+      const q = queryEl.value.trim();
+      if (!q) {
+        resultsEl.innerHTML = `<div class="student-card"><div style="color:#ffd1d1">⚠️ Please enter a roll number or full name to search.</div></div>`;
+        metaLine.hidden = true;
+        return;
+      }
+      if (indexByStudent.size === 0) {
+        console.log('Index is empty. Reloading data...');
+        await loadEnrollments();
+      }
+      const list = searchQuery(q);
+      renderStudents(list, q);
+    });
+
+    // allow Enter key inside input
+    queryEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+
+    // initial load (preload)
+    console.log('Script loaded. Starting initial data fetch.');
+    loadEnrollments();
+  </script>
+</body>
+</html>

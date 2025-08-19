@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fluency Course | SuffixAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General body and container styles */
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .course-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #6c2bd9;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            background-color: #9b5cff;
+        }
+        
+        /* Course header section */
+        .course-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .course-header-image {
+            width: 40%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-header-content {
+            flex-grow: 1;
+        }
+        
+        .course-header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-header-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .course-meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .course-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+        }
+        
+        .course-meta-item .icon {
+            color: #6c2bd9;
+            font-size: 1.2rem;
+        }
+        
+        /* Main content sections */
+        .course-main-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .course-left-col {
+            flex: 2;
+        }
+        
+        .course-right-col {
+            flex: 1;
+        }
+        
+        .course-section {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .course-section h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        /* Syllabus section */
+        .syllabus-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .syllabus-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .syllabus-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+        }
+        
+        .syllabus-item-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .syllabus-item-content {
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            display: none;
+        }
+        
+        .syllabus-item.active .syllabus-item-content {
+            display: block;
+        }
+        
+        /* Tutor section */
+        .tutor-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tutor-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        /* FAQ section */
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-item h4 {
+            margin: 0;
+            cursor: pointer;
+            color: #6c2bd9;
+            font-size: 1rem;
+        }
+        
+        .faq-item p {
+            margin-top: 5px;
+            padding-left: 15px;
+            border-left: 2px solid #eee;
+            display: none;
+        }
+
+        /* Enrollment card */
+        .enrollment-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .enrollment-card h3 {
+            font-size: 2rem;
+            color: #6c2bd9;
+            margin-bottom: 10px;
+        }
+
+        .enrollment-card p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .course-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .course-header-image {
+                width: 80%;
+                margin: 0 auto;
+            }
+            .course-main-content {
+                flex-direction: column;
+            }
+            .course-right-col {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .course-header {
+                padding: 20px;
+            }
+            .course-header-content h1 {
+                font-size: 1.8rem;
+            }
+            .course-header-content p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Header specific for the course page */
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #6c2bd9;
+            text-decoration: none;
+        }
+        
+        /* Pop-up Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .popup-content h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .popup-content p {
+            margin-bottom: 20px;
+        }
+
+        .popup-content .contact-btn {
+            background-color: #25d366; /* WhatsApp green */
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .popup-content .contact-btn:hover {
+            background-color: #128c7e;
+        }
+
+        .popup-content .cancel-btn {
+            background-color: #e0e0e0;
+            color: #333;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-content .cancel-btn:hover {
+            background-color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Floating Icon Styles */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999;
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        <!-- Page Header with Logo -->
+        <header class="page-header">
+            <a href="index.html" class="brand">SuffixAI</a>
+        </header>
+
+        <!-- Course Header -->
+        <header class="course-header">
+            <img src="img/suffix ai fulency course.jpg" alt="AI Fluency Course" class="course-header-image">
+            <div class="course-header-content">
+                <div class="course-meta-info">
+                    <span class="course-meta-item"><i class="fas fa-calendar-alt icon"></i> Start Date: 1st Nov 2025</span>
+                    <span class="course-meta-item"><i class="fas fa-calendar-check icon"></i> End Date: 1st Feb 2026</span>
+                    <span class="course-meta-item"><i class="fas fa-clock icon"></i> Duration: 3 months</span>
+                </div>
+                <h1 style="color: #333;">AI Fluency</h1>
+                <p>
+                    Master the foundational and advanced concepts of AI & ML with a practical, project-based approach. 
+                    This course is designed to make you a confident and fluent user of AI technologies.
+                </p>
+                <!-- <button onclick="showPopup()" class="cta-btn">Enroll Now</button> -->
+            </div>
+        </header>
+
+        <!-- Main Course Content -->
+        <div class="course-main-content">
+            <!-- Left Column -->
+            <div class="course-left-col">
+                <div class="course-section" id="course-details">
+                    <h2>Course Details</h2>
+                    <p>
+                        The AI Fluency course is a comprehensive 3-month program that covers everything from the basics of AI to advanced topics in Machine Learning, Deep Learning, and NLP. The course is designed for both beginners and experienced professionals looking to upgrade their skills.
+                    </p>
+                    <p>
+                        It focuses on hands-on learning, with each topic backed by practical exercises and two major projects to build a strong portfolio. You'll learn to use AI for practical applications like building websites, apps, and chatbots, as well as creating professional documents.
+                    </p>
+                </div>
+
+                <div class="course-section" id="syllabus">
+                    <h2>Syllabus</h2>
+                    <ul class="syllabus-list">
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Introduction to AI and Course Overview</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>A foundational introduction to the world of Artificial Intelligence, its history, and what to expect from the course. We will cover the present, past, and future of AI technology.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>AI & Its Subtechnologies</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>An overview of the different fields within AI, including Machine Learning, Deep Learning, NLP, and Computer Vision.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Machine Learning & Its Types</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>A deep dive into Machine Learning, its core concepts, and its different types (supervised, unsupervised, and reinforcement learning).</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>What is Deep Learning?</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Understanding the basics of Deep Learning, neural networks, and how it differs from traditional machine learning.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>NLP & Computer Vision</h3>
+                                <small>Day 2</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Learn about Natural Language Processing (NLP) and Computer Vision, their applications, and how they work. We will also explore mathematical models in AI such as Linear Regression, SVM, and Decision Trees.</p>
+                            </div>
+                        </li>
+                         <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>AI Ethics and Career</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Discuss the ethical implications of AI, its limitations, and how to secure a job in this rapidly growing field.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Introduction to LLM Models</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>An introduction to Large Language Models (LLMs) like ChatGPT, Gemini, Copilot, Perplexity, and Claude.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Prompt Engineering</h3>
+                                <small>Day 1</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Learn the art of prompt engineering to interact with AI and use its full potential. We'll also cover how to create various documents and designs using AI.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Build Websites and Apps Using AI</h3>
+                                <small>Day 5</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Practical sessions on how to build websites and apps using AI tools. This includes creating portfolio and e-commerce websites.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Data Analysis and Chatbots</h3>
+                                <small>Day 2</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Learn how to use AI for data analysis, creating business dashboards, and building AI chatbots for various applications.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Project A - Advanced Machine Learning</h3>
+                                <small>Day 5</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Hands-on project on advanced machine learning techniques to build a robust portfolio.</p>
+                            </div>
+                        </li>
+                        <li class="syllabus-item">
+                            <div class="syllabus-item-header">
+                                <h3>Project B - Advanced NLP</h3>
+                                <small>Day 5</small>
+                            </div>
+                            <div class="syllabus-item-content">
+                                <p>Hands-on project on advanced NLP techniques to build a robust portfolio.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="course-section" id="tutor">
+                    <h2>About the Tutor</h2>
+                    <div class="tutor-card">
+                        <img src="img/prasad pic.jpg" alt="Prasad Shelke">
+                        <div>
+                            <h3>Prasad Shelke</h3>
+                            <p>
+                                Prasad is a seasoned AI expert and the founder of SuffixAI. With years of experience in the field, he has trained countless students to become proficient in AI and Machine Learning. His teaching style is hands-on, focusing on practical skills and real-world applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-section" id="faq">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-item">
+                        <h4>What are the prerequisites for this course?</h4>
+                        <p>No prior knowledge of AI or programming is required. The course starts from the basics and builds up to advanced topics.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What is the refund policy?</h4>
+                        <p>We offer a 7-day no-questions-asked refund policy from the date of enrollment.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Will I get a certificate after completing the course?</h4>
+                        <p>Yes, you will receive a certificate of completion after successfully finishing all modules and projects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (Enrollment Card) -->
+            <div class="course-right-col">
+                <div class="enrollment-card">
+                    <h3>₹ 5999</h3>
+                    <p>All-inclusive course price</p>
+                    <a href="https://rzp.io/rzp/YhlCmWc" class="cta-btn">Proceed to Payment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pop-up Window -->
+    <div id="contactPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h3>Need More Information?</h3>
+            <p>Our educators are here to help. Get in touch with us on WhatsApp for any questions about the course, syllabus, or enrollment process.</p>
+            <a href="https://wa.me/918767387480" class="contact-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <button onclick="hidePopup()" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Icon -->
+    <div id="floatingContactBtn" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script>
+        // Simple script to toggle syllabus and FAQ content visibility
+        document.querySelectorAll('.syllabus-item-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('active');
+            });
+        });
+        
+        document.querySelectorAll('.faq-item h4').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+        
+        // Pop-up and floating button functions
+        const popup = document.getElementById('contactPopup');
+        const floatingBtn = document.getElementById('floatingContactBtn');
+        let popupShown = false;
+
+        function showPopup() {
+            popup.style.display = 'flex';
+            floatingBtn.style.display = 'none';
+        }
+
+        function hidePopup() {
+            popup.style.display = 'none';
+            floatingBtn.style.display = 'flex';
+            popupShown = false;
+        }
+
+        // Add a click listener to the "Enroll Now" button that shows the popup.
+        // This is separate from the "Proceed to Payment" link.
+        document.querySelector('.course-header-content .cta-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            showPopup();
+        });
+
+        // Add a click listener to the "Proceed to Payment" button.
+        // This button should redirect to the payment page.
+        document.querySelector('.enrollment-card .cta-btn').addEventListener('click', (e) => {
+            // The default behavior of the anchor tag should take over here, so no preventDefault()
+        });
+
+        // The logic for the popup to appear after a delay
+        window.addEventListener('load', () => {
+            floatingBtn.style.display = 'flex'; // Show floating button on load
+            setTimeout(() => {
+                if (!popupShown) {
+                    showPopup();
+                    popupShown = true;
+                }
+            }, 300000); // 5 minutes in milliseconds
+        });
+        
+        floatingBtn.addEventListener('click', () => {
+            if (popup.style.display === 'flex') {
+                hidePopup();
+            } else {
+                showPopup();
+            }
+        });
+    </script>
+</body>
+</html>

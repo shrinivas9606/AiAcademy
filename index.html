@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SuffixAI — Learn AI & ML</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#">
+                <img src="img/SUFIX LOGO.jpg" alt="SuffixAI Logo" class="brand-logo">
+            </a>
+            <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav" class="main-nav">
+                <a href="#home">Home</a>
+                <a href="#notifications">Notifications</a>
+                <div class="dropdown">
+                    <a href="#" id="myEnrollmentLink">My Enrollment</a>
+                    <div class="dropdown-content">
+                        <a href="studentenrollment.html">Student</a>
+                        <a href="#" id="adminLoginLink">Admin</a>
+                    </div>
+                </div>
+                <a href="vlog.html">Vlogs</a>
+                <a href="#courses">Courses</a>
+                <a href="#news-uploads">Uploads</a>
+                <div id="authButtons" class="auth-buttons">
+                    <a href="login.html" class="cta-outline">Login</a>
+                    <a href="registration.html" class="cta" style="color: black;">Register</a>
+                </div>
+                <div id="userProfile" class="user-profile" style="display: none;">
+                    <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 3a3.5 3.5 0 1 1-3.5 3.5A3.5 3.5 0 0 1 12 5zm0 14.2c-2.43 0-4.42-1.25-5.91-3.15A7.054 7.054 0 0 1 12 14c2.43 0 4.42 1.25 5.91 3.15c-1.49 1.9-3.48 3.15-5.91 3.15z"/>
+                    </svg>
+                    <span id="userName" class="user-name"></span>
+                    <button id="logoutBtn" class="btn cta-outline">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <!-- Hero with slider -->
+        <section class="hero container" id="hero">
+            <div class="hero-left">
+                <p class="subtle" style="color: #fff;"><B>Welcome to the Future of AI Education</B></p>
+                <h1>Master <span class="accent">AI & ML</span> with <span class="brand-highlight">SuffixAI</span></h1>
+                <p class="lead" style="color: #fff;"><B>Transform your career with industry-standard AI education. Hands-on projects, expert mentors, and career support.</B></p>
+
+                <div class="hero-actions">
+                    <a href="#courses" class="btn">Explore Courses</a>
+                    <a href="#"  data-course="course1.html" class="btn btn-outline enroll-btn">Enroll Now</a>
+                </div>
+
+                <div class="instructor-card">
+                    <img src="img/prasad pic.jpg" alt="Instructor" class="avatar">
+                    <div>
+                        <strong>Prasad Shelke</strong>
+                        <small>Founder & Lead AI Trainer</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="course-slider" id="courseSlider" aria-live="polite">
+                    <div class="slide active">
+                        <img src="img/suffix ai fulency course.jpg" alt="Course 1">
+                        <div class="slide-info">
+                            <h3>Admission Open Enroll Now</h3>
+                            <h3>Ai Fluency Course</h3>
+                            <p>45 Days • Projects • Future Ready Insights</p>
+                            <a class="btn btn-small enroll-btn" href="#" data-course="course1.html">Enroll</a>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="img/suffix ai blockchain course.jpg" alt="Course 2">
+                        <div class="slide-info">
+                              <h3>Up Coming!..</h3>
+                            <h3>Blockchain Technology</h3>
+                            <p>45 DAYS •Hands-on labs • Certification</p>
+                           <a class="btn btn-small enroll-btn" href="#" data-course="course2.html">Enroll</a>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="img/suffix ai mastry course.jpg" alt="Course 3">
+                        <div class="slide-info">
+                            <h3>Up Coming!..</h3>
+                            <h3>Ai Mastery Course</h3>
+                            <p>90 days • Text analytics • Real projects</p>
+                            <a class="btn btn-small enroll-btn" href="#" data-course="course3.html">Enroll</a>
+                        </div>
+                    </div>
+
+                    <div class="slider-controls">
+                        <button id="prevSlide" aria-label="Previous slide">‹</button>
+                        <button id="nextSlide" aria-label="Next slide">›</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News strip / ticker -->
+        <div class="news-strip" id="notifications">
+            <div class="news-inner">
+                <div class="ticker" id="newsTicker">
+                    <B><span style="color: #fff;">New batch:Ai Fluency Course— Admission open enroll now • </span>
+                    <span style="color: #fff;">Masterclass webinar on AI Mastery • </span>
+                    <span style="color: #fff;">Free masterclass: Intro to Transformers — RSVP now • </span>
+                    <span style="color: #fff;">Excited goodies for top performers • </span></B>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses grid -->
+        <section class="container section" id="courses">
+            <h2 class="section-title">All Courses</h2>
+            <p class="section-sub">Choose a path — beginner to advanced. Click Enroll to register.</p>
+            <div class="courses-grid">
+                <!-- Card Example -->
+                <article class="course-card">
+                    <img src="img/suffix ai fulency course.jpg" alt="">
+                    <div class="course-body">
+                        <h3>Admission Open</h3>
+                        <h4>Artificial Intelligence – AI Fluency Course </h4>
+                        <p class="course-desc" style="color: #fff;">
+                            <b >Rs 5,999</b>
+                            The Artificial Intelligence – AI Fluency Course by Suffix.AI is a 45-day intensive program conducted by Prof. Prasad Shelke. The course introduces learners to the fundamentals of Artificial Intelligence and its real-world applications through practical learning and guided projects. With a focus on building strong foundations, it is ideal for students, professionals, and entrepreneurs. The course fee is ₹4,999.   
+                        </p>
+                        <div class="meta">Duration: 45 Days • Level: Beginner/Intermediate</div>
+                       <div class="btn-group">
+                           <a class="btn btn-small enroll-btn" href="#" data-course="course1.html">Enroll</a>
+                           <a class="btn btn-small" href="read.html">Read More</a>
+                       </div>
+                    </div>
+                </article>
+
+                <article class="course-card">
+                    <img src="img/suffix ai blockchain course.jpg" alt="">
+                    <div class="course-body">
+                        <h3>Upcoming!</h3>
+                        <h4>Blockchain Technology – Web 3 Course</h4>
+                        <p class="course-desc" style="color: #fff;">
+                            <b>RS 5,999</b>
+The Blockchain Technology – Web 3 Course by Suffix Academy is a 45-day program led by Prof. Nishant Chinchole. It focuses on blockchain fundamentals, cryptocurrency, smart contracts, and decentralized applications. The course is designed for students and professionals who want to build expertise in the fast-growing Web 3.0 ecosystem. The course fee is ₹5,499.  
+                        </p>
+                        <div class="meta">Duration: 45 days • Level: Biginner/Intermediate</div>
+                       
+                        <div class="btn-group">
+                            <a class="btn btn-small enroll-btn" href="#" data-course="course2.html">Enroll</a>
+                            <a class="btn btn-small" href="read2.html">Read More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="course-card">
+                    <img src="img/suffix ai mastry course.jpg" alt="">
+                    <div class="course-body">
+                        <h3>Upcoming!</h3>
+                        <h4>Artificial Intelligence –AI Mastery Course</h4>
+                        <p class="course-desc" style="color: #fff;">
+                            <b>RS 29,999</b>
+The Artificial Intelligence – AI Mastery Course by Suffix.AI is  advanced program taught by Prof. Gajanan Sawdtakar. It covers AI concepts, hands-on projects, and real-world
+                        </p>
+                        <div class="meta">Duration: 90 Days • Level: Beginner to Advance</div>
+                        <div class="btn-group">
+                            <a class="btn btn-small enroll-btn" href="#" data-course="course3.html">Enroll</a>
+                            <a class="btn btn-small" href="read3.html">Read More</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-container">
+                <div class="about-images">
+                    <img src="img/suffix about.webp" alt="Team Working" class="about-img img-top">
+                    <img src="img/suffix about 2.png" alt="Team Meeting" class="about-img img-bottom">
+                </div>
+                <div class="about-text">
+                    <h5 class="about-subtitle">About Us</h5>
+                    <h2 class="about-title"> Suffix AI Academy</h2>
+                    <p>
+                        
+                        
+                        SuffixAI is a leading provider of AI and ML education, offering comprehensive courses designed to equip learners with the skills needed to excel in the rapidly evolving field of artificial intelligence. Our expert instructors bring real-world experience and a passion for teaching, ensuring that students gain both theoretical knowledge and practical skills through hands-on projects and industry-relevant case studies.
+                        
+                    </p>
+                    <p>
+                        We believe in making AI accessible to everyone, from beginners to advanced practitioners. Our courses cover a wide range of topics, including machine learning, deep learning, natural language processing, and computer vision. With a focus on practical applications and real-world scenarios, we prepare our students to tackle the challenges of tomorrow's AI landscape.
+                        We believe in making AI accessible to everyone, from beginners to advanced practitioners.<br>✨ "Learn today, lead tomorrow."
+🚀 "Empowering you with future-ready skills."
+🌍 "Where innovation meets trust and opportunity."
+                    </p>
+                    <a href="#courses" class="btn violet-btn">More Details</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+       
+       
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea id="message" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      <p id="formStatus"></p>
+    </div>
+
+    <!-- Contact Image -->
+    <div class="contact-image">
+      <img src="img/suffix contaact.webp" alt="Contact Us">
+    </div>
+  </div>
+</section>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbz3pe-R_502R2C0tAcH1cHB9gV1bzfA2WrVF6f-TXH4XiKOhJelcybX6MV4pIsCwICS/exec"; // Replace with your Apps Script URL
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      })
+    })
+      .then((res) => {
+        status.innerText = "❌ Something went wrong. Please Contact on What's App (Icon at right side )!";
+        form.reset();
+      })
+      .catch((err) => {
+        status.innerText = "❌ Something went wrong. Please Contact on What's App (Icon at right side )!";
+      });
+  });
+</script>
+<!-- ✅ Message sent successfully! -->
+
+       
+       
+       
+       
+
+
+        <div class="floating-contact">
+    <a href="tel:+917499612379" class="floating-btn call-btn" aria-label="Call SuffixAI">
+        <i class="fas fa-phone"></i>
+    </a>
+    <a href="https://wa.me/918767387480" class="floating-btn whatsapp-btn" aria-label="Message SuffixAI on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+        <!-- News uploads grid -->
+        <section class="container section" id="news-uploads">
+            <h2 class="section-title">Latest News & Uploads</h2>
+            <div class="news-slider" id="newsSlider">
+                <button class="news-nav prev" id="newsPrev" aria-label="Previous">‹</button>
+                <div class="news-track" id="newsTrack">
+                    <!-- 1 -->
+                    <article class="news-card" data-date="2025-08-12">
+                        <img src="img/suffix ai fulency course.jpg" alt="Lecture: Transfer Learning">
+                        <div class="news-content">
+                            <h4>Admissions are open!</h4>
+                            <small class="news-date">Uploaded …</small>
+                            <p class="news-desc">
+                                Join our AI Fluency Course starting soon! Learn the fundamentals of AI with hands-on projects and expert mentorship. Perfect for beginners and those looking to enhance their skills.
+                                Enroll now to secure your spot and take the first step towards a career in AI.
+                            </p>
+                            <div class="news-actions">
+                                <a class="btn btn-small btn-outline read-more" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- 2 -->
+                    <article class="news-card" data-date="2025-08-10">
+                        <img src="img/suffix news 2.webp" alt="Tutorial: Data Augmentation">
+                        <div class="news-content">
+                            <h4>Tutorial: Data Augmentation</h4>
+                            <small class="news-date">Uploaded …</small>
+                            <p class="news-desc">
+                               Finding international films that might appeal to the US market is an important part of the work of XYZ Films.
+Maxime Cottray is the chief operating officer at the Los Angeles-based independent studio.
+He says the US market has always been tough for foreign language films.
+"It's been limited to coastal New York viewers through art house films," he says.It's partly a language problem."America is not a culture which has grown up with subtitles or dubbing like Europe has," he points out.But that language hurdle might be easier to clear with a new AI-driven dubbing system.                          
+                            </p>
+                            <div class="news-actions">
+                                <a class="btn btn-small btn-outline read-more" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- 3 -->
+                    <article class="news-card" data-date="2025-08-06">
+                        <img src="img/suffix ai blockchain course.jpg" alt="Webinar: ML in Production">
+                        <div class="news-content">
+                            <h4>Upcoming: Blockchain web3</h4>
+                            <small class="news-date">Uploaded …</small>
+                            <p class="news-desc" style="padding-left: 2%; padding-right: 2%;">
+                                “Suffix AI Academy has announced the launch of its upcoming Blockchain Technology – Web 3.0 Course, a 45-day intensive program designed to equip learners with the skills of tomorrow. Led by Prof. Nishant Chinchole, the course will cover blockchain fundamentals, cryptocurrency, smart contracts, and decentralized applications. With Web 3.0 shaping the future of digital ecosystems, this program aims to prepare students, professionals, and entrepreneurs to thrive in the rapidly growing blockchain industry.”
+                                
+                            </p>
+                            <div class="news-actions">
+                                <a class="btn btn-small btn-outline read-more" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- 4 -->
+                    <article class="news-card" data-date="2025-08-01">
+                        <img src="img/auffix new 4.jpg" alt="Guide: Prompt Engineering">
+                        <div class="news-content">
+                            <h4>Guide: Prompt Engineering</h4>
+                            <small class="news-date">Uploaded …</small>
+                            <p class="news-desc" style="padding-left: 2%; padding-right: 2%;">
+                               “Pune-based Suffix AI Academy is redefining the future of learning by integrating Artificial Intelligence with practical skill development. With a vision to make AI education accessible, affordable, and industry-ready, the academy offers specialized courses in AI, Blockchain, and Digital Fluency. Backed by expert mentors and real-world projects, Suffix AI Academy is empowering youth to embrace the future of technology with confidence and competence.”
+                               
+                            </p>
+                            <div class="news-actions">
+                                <a class="btn btn-small btn-outline read-more" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- 5 -->
+                    <article class="news-card" data-date="2025-07-28">
+                        <img src="img/suffix ai mastry course.jpg" alt="Release: CV Project Pack">
+                        <div class="news-content">
+                            <h4>Releasing Soon: AI Mastery </h4>
+                            <small class="news-date">Uploaded …</small>
+                            <p class="news-desc" style="padding-left: 2%; padding-right: 2%;">
+                                “Suffix AI Academy is excited to announce the upcoming launch of its AI Mastery Course, a comprehensive 90-day program designed to take learners from foundational concepts to advanced applications in artificial intelligence. Led by Prof. Gajanan Sawdtakar, this course will cover deep learning, natural language processing, computer vision, and more. With a focus on hands-on projects and real-world case studies, the AI Mastery Course aims to equip students with the skills needed to excel in the rapidly evolving field of AI.”
+                                
+                            </p>
+                            <div class="news-actions">
+                                <a class="btn btn-small btn-outline read-more" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- 6 -->
+                    <article class="news-card" data-date="2025-07-20">
+                        <img src="img/suffix news 6.webp" alt="Case Study: Retail Demand Forecasting">
+                        <div class="news-content">
+                            <h4>Case Study: Retail Demand Forecasting</h4>
+                            <small class="news-date">Uploaded …</small>
+                            <p class="news-desc" style="padding-left: 2%; padding-right: 2%;">
+                                How feature stores and gradient boosting reduced stockouts by 17% for a mid-size retailer.
+                                Step-by-step approach, pitfalls, and reproducible code outline included.
+                            </p>
+                            <div class="news-actions">
+                                <a class="btn btn-small btn-outline read-more" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <button class="news-nav next" id="newsNext" aria-label="Next">›</button>
+            </div>
+        </section>
+
+        <!-- Testimonials slider -->
+        <section class="container section" id="testimonials">
+            <h2 class="section-title">What Students Say</h2>
+            <div class="testi-slider" id="testiSlider">
+                <div class="testi active">
+                    <img src="assets/user1.jpg" alt="" class="avatar circular">
+                    <blockquote style="color: black;">"Great courses and hands-on projects — helped me land my first role in ML."</blockquote>
+                    <cite>— Ankit, ML Engineer</cite>
+                </div>
+                <div class="testi">
+                    <img src="assets/user2.jpg" alt="" class="avatar circular">
+                    <blockquote style="color: black;">"The mentors are very supportive and the projects are industry-relevant."</blockquote>
+                    <cite>— Priya, Data Scientist</cite>
+                </div>
+                <div class="testi">
+                    <img src="assets/user3.jpg" alt="" class="avatar circular">
+                    <blockquote style="color: black;">"Structured curriculum and placement guidance made a big difference."</blockquote>
+                    <cite>— Rohit, Research Intern</cite>
+                </div>
+
+                <div class="testi-controls">
+                    <button id="prevTesti" style="background-color: blueviolet;">‹</button>
+                    <button id="nextTesti" style="background-color: blueviolet;">›</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="sufix-footer">
+        <div class="footer-container">
+            <div class="footer-container">
+    <div class="footer-col">
+        <!-- Replace text with logo -->
+        <div class="footer-logo">
+            <img src="img/SUFIX LOGO.jpg" alt="Suffix AI Logo">
+        </div>
+        <p class="footer-text">
+            Empowering innovation with AI solutions for the future.
+        </p>
+        <div class="footer-socials">
+            <a href=" https://youtube.com/@suffixai?si=C9QPDW5yat4eEP4Z "><i class="fab fa-youtube"></i></a>
+            <a href="https://x.com/Suffixai?t=mFTEkhq9hmJRXQS9kRmSOQ&s=09 "><i class="fab fa-twitter"></i></a>
+            <a href=" https://www.instagram.com/suffixaiacademy?igsh=MThncm9tZW1jamFrcw== "><i class="fab fa-instagram"></i></a>
+            <a href=" https://www.linkedin.com/in/suffix-ai-385802373 "><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>
+
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#About">About Us</a></li>
+                    <li><a href="#courses">Services</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="vlog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="https://wa.me/918767387480">Help Center</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="terms.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> Baner, Pune, MH 411045 </li>
+                    <li><i class="fas fa-phone"></i> +91 74996 12379</li>
+                    <li><i class="fas fa-envelope"></i>  suffixaiacademy@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Sufix AI. All Rights Reserved.</p>
+             <p style="padding-left: -2%;">Developed & Managed by <a href="https://galvyn.in/" style="color: #fff; ">Galvyn Tech</a></p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+    <script src="scripts.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKTlD0iuhjRc5vAq5Cw9yyJbzoNwyXbAw",
+            authDomain: "sufix-registration.firebaseapp.com",
+            projectId: "sufix-registration",
+            storageBucket: "sufix-registration.firebasestorage.app",
+            messagingSenderId: "979586808842",
+            appId: "1:979586808842:web:381c48575a87f98c96f3f3",
+            measurementId: "G-WSGSPZ8GT3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const authButtonsDiv = document.getElementById('authButtons');
+        const userProfileDiv = document.getElementById('userProfile');
+        const userNameSpan = document.getElementById('userName');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const enrollButtons = document.querySelectorAll('.enroll-btn');
+
+        // Function to handle the enrollment button click
+        function handleEnrollmentClick(e) {
+    e.preventDefault();
+    const user = auth.currentUser;
+    const targetCourse = e.target.getAttribute("data-course"); // get course page
+
+    if (user) {
+        // Redirect to the respective course page
+        window.location.href = targetCourse;
+    } else {
+        alert("Please login first to enroll in a course.");
+        window.location.href = "login.html";
+    }
+}
+
+// Attach event listeners to all enroll buttons
+document.querySelectorAll(".enroll-btn").forEach(btn => {
+    btn.addEventListener("click", handleEnrollmentClick);
+});
+
+      
+      
+
+      
+      
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                console.log("User is logged in:", user.email);
+                authButtonsDiv.style.display = 'none';
+                userProfileDiv.style.display = 'flex';
+
+                // Try to fetch full name from Firestore
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                const userDocRef = doc(db, `artifacts/${appId}/users/${user.uid}/registrations`, 'userData');
+                try {
+                    const docSnap = await getDoc(userDocRef);
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        userNameSpan.textContent = userData.fullName || user.email; // Use full name if available
+                    } else {
+                        userNameSpan.textContent = user.email; // Fallback to email
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data from Firestore:", error);
+                    userNameSpan.textContent = user.email; // Fallback to email
+                }
+            } else {
+                // User is signed out
+                console.log("User is logged out.");
+                authButtonsDiv.style.display = 'flex';
+                userProfileDiv.style.display = 'none';
+                userNameSpan.textContent = '';
+            }
+        });
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    await signOut(auth);
+                    console.log("User signed out successfully.");
+                    // The onAuthStateChanged listener will handle the UI update
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                }
+            });
+        }
+        
+        // Attach the click handler to all "Enroll" buttons
+        enrollButtons.forEach(button => {
+            button.addEventListener('click', handleEnrollmentClick);
+        });
+    </script>
+</body>
+</html>

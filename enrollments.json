@@ -1,0 +1,83 @@
+[
+    {
+        "rollNumber": "101",
+        "name": "Aman",
+        "courses": [
+            {
+                "courseName": "AI Fundamentals",
+                "joinDate": "2025-06-01",
+                "endDate": "2025-07-01",
+                "duration": "1 Month",
+                "paymentStatus": "Paid"
+            }
+        ]
+    },
+    {
+        "rollNumber": "102",
+        "name": "Shri",
+        "courses": [
+            {
+                "courseName": "Machine Learning",
+                "joinDate": "2025-05-01",
+                "endDate": "2025-07-01",
+                "duration": "2 Months",
+                "paymentStatus": "Paid"
+            },
+            {
+                "courseName": "Deep Learning",
+                "joinDate": "2025-06-01",
+                "endDate": "2025-08-01",
+                "duration": "2 Months",
+                "paymentStatus": "Paid"
+            },
+            {
+                "courseName": "Data Science",
+                "joinDate": "2025-07-01",
+                "endDate": "2025-09-01",
+                "duration": "2 Months",
+                "paymentStatus": "Pending"
+            },
+            {
+                "courseName": "NLP Basics",
+                "joinDate": "2025-08-01",
+                "endDate": "2025-10-01",
+                "duration": "2 Months",
+                "paymentStatus": "Paid"
+            },
+            {
+                "courseName": "Computer Vision",
+                "joinDate": "2025-08-10",
+                "endDate": "2025-10-10",
+                "duration": "2 Months",
+                "paymentStatus": "Paid"
+            }
+        ]
+    },
+    {
+        "rollNumber": "103",
+        "name": "Alice",
+        "courses": [
+            {
+                "courseName": "Web Development",
+                "joinDate": "2025-05-15",
+                "endDate": "2025-07-15",
+                "duration": "2 Months",
+                "paymentStatus": "Paid"
+            },
+            {
+                "courseName": "ReactJS Mastery",
+                "joinDate": "2025-06-15",
+                "endDate": "2025-08-15",
+                "duration": "2 Months",
+                "paymentStatus": "Paid"
+            },
+            {
+                "courseName": "Backend with Node.js",
+                "joinDate": "2025-07-15",
+                "endDate": "2025-09-15",
+                "duration": "2 Months",
+                "paymentStatus": "Pending"
+            }
+        ]
+    }
+]

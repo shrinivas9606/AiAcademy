@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suffix AI Academy | Student Enrollment Search</title>
+  <link rel="stylesheet" href="myenroll.css" />
+</head>
+<body>
+  <header>
+    <h1>🤖 Suffix AI Academy</h1>
+    <p>Smart Student Enrollment Lookup</p>
+  </header>
+
+  <main>
+    <form id="searchForm">
+      <input id="query" type="text" placeholder="🔍 Search by Name or Roll Number..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="loading" hidden>⏳ Loading data...</div>
+    <p id="resultMeta" hidden></p>
+    <p id="empty" hidden>No students found. Try another search.</p>
+
+    <section id="cards"></section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Suffix AI Academy. Powered by Intelligence.
+  </footer>
+
+  <script src="myenroll.js"></script>
+</body>
+</html>
